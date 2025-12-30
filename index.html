@@ -1,19 +1,101 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" data-theme="light">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOUDINI-BD Study</title>
     <link rel="stylesheet" href="style.css">
-    <title>My Professional Site</title>
 </head>
 <body>
 
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
+    <nav class="navbar">
+        <div class="nav-left">
+            <div class="logo-text"><strong>HOUDINI-BD</strong></div>
+            <div class="divider"></div>
+            <ul class="nav-links">
+                <li><a href="#intro">Home</a></li>
+                <li><a href="#study">Study</a></li>
+                <li><a href="#research-team">Research Team</a></li>
+                <li><a href="#take-part">Take Part</a></li>
+                <li><a href="#cohort">Cohort</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+        
+        <div class="nav-right">
+            <select id="theme-selector" class="theme-btn">
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+                <option value="automatic">Auto</option>
+            </select>
+        </div>
     </nav>
 
-    <h1>Welcome to My Website</h1>
-    <p>I am learning how to structure web pages. You can learn more 
-       <a href="about.html">on my About page</a>.</p>
+    <main>
+        <section id="intro" class="two-column">
+            <div class="left-col">
+                <img src="static/images/study_logo.png" alt="HOUDINI-BD Logo" class="side-logo">
+            </div>
+            <div class="right-col">
+                <h1>Welcome to HOUDINI-BD</h1>
+                <p>Insert your introductory research text here. This section explains the core mission of the study.</p>
+            </div>
+        </section>
 
+        <section id="study" class="two-column alt-section">
+            <div class="left-col"><h2>Study</h2></div>
+            <div class="right-col"><p>Content about the study goes here...</p></div>
+        </section>
+
+        <section id="research-team" class="two-column">
+            <div class="left-col"><h2>Research Team</h2></div>
+            <div class="right-col"><p>Team member bios and affiliations...</p></div>
+        </section>
+
+        <section id="take-part" class="two-column alt-section">
+            <div class="left-col"><h2>Take Part</h2></div>
+            <div class="right-col"><p>Details on how participants can join the study.</p></div>
+        </section>
+
+        <section id="cohort" class="two-column">
+            <div class="left-col"><h2>Cohort</h2></div>
+            <div class="right-col"><p>Information regarding the study population and data.</p></div>
+        </section>
+
+        <section id="contact" class="two-column alt-section">
+            <div class="left-col"><h2>Contact</h2></div>
+            <div class="right-col">
+                <p>Please reach out to us using the following contact details. If you prefer, please leave your contact email and your message in the boxes below and click on 'Send email'.</p>
+                
+                <div class="icon-contact">
+                    <div class="contact-line">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        <span>f.corponi@imperial.ac.uk</span>
+                    </div>
+                    <div class="contact-line">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                        <span>+44 (0)20 XXXX XXXX</span>
+                    </div>
+                </div>
+
+                <form action="https://formspree.io/f/YOUR_ID" method="POST" class="stacked-form">
+                    <label>Your contact email</label>
+                    <input type="email" name="email" required>
+                    
+                    <label>Your message</label>
+                    <textarea id="message" name="message" rows="10"></textarea>
+                    
+                    <button type="submit" class="submit-btn">Send email</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
