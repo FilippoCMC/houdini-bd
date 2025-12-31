@@ -154,3 +154,174 @@ section {
     align-items: center; 
     font-size: 1.1rem; /* Slightly larger text to match bigger icons */
 }
+
+/* Logo Row in Intro */
+.logo-row {
+    display: flex;
+    /* --- CONTROL GAP HERE --- */
+    gap: 80px;            /* Increase this value (e.g., 100px) for more space */
+    /* ------------------------ */
+    
+    margin-top: 40px;     
+    width: 100%;          
+    align-items: center;  /* Ensures logos stay on the same horizontal level */
+}
+
+.logo-container {
+    flex: 1;              /* Forces both containers to be identical in width */
+    height: 120px;        /* Fixed height to keep them uniform */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-container img {
+    max-width: 100%;      /* Image will not exceed the container width */
+    max-height: 100%;     /* Image will not exceed the 120px height */
+    object-fit: contain;  /* Maintains logo proportions without distortion */
+}
+
+/* Responsive adjustment for mobile */
+@media (max-width: 600px) {
+    .logo-row {
+        flex-direction: column; /* Stack logos on small screens */
+        gap: 30px;
+    }
+}
+
+/* Research Team Grid */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two equal columns */
+    gap: 40px;
+    text-align: center;
+}
+
+.team-member {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* If there is an odd number of members, center the last one */
+.team-member:last-child:nth-child(odd) {
+    grid-column: 1 / span 2;
+}
+
+.member-photo {
+    width: 180px;         /* Fixed size for all pictures */
+    height: 180px;        /* Fixed size for all pictures */
+    border-radius: 50%;   /* Makes the frame circular */
+    overflow: hidden;     /* Crops anything outside the circle */
+    margin-bottom: 15px;
+    border: 2px solid var(--border-color);
+    background-color: var(--bg-alt); /* Placeholder color if image fails */
+}
+
+.member-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;    /* Ensures image fills circle without distortion */
+}
+
+.member-name {
+    display: block;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: var(--text-color);
+    text-decoration: none;
+    margin-bottom: 5px;
+}
+
+.member-name:hover {
+    color: var(--accent); /* Changes color on hover */
+    text-decoration: underline;
+}
+
+.member-role {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+/* Responsive adjustment for team grid */
+@media (max-width: 600px) {
+    .team-grid {
+        grid-template-columns: 1fr; /* Single column on small mobile */
+    }
+    .team-member:last-child:nth-child(odd) {
+        grid-column: auto;
+    }
+}
+
+/* --- RESPONSIVE BREAKPOINTS --- */
+
+/* Tablets and small desktops (Large screens) */
+@media (max-width: 1024px) {
+    .navbar {
+        padding: 10px 20px;
+    }
+    .left-col {
+        padding: 20px;
+    }
+    .right-col {
+        padding: 20px 30px;
+    }
+}
+
+/* Mobile Devices (Phones) */
+@media (max-width: 768px) {
+    /* Stack the two columns vertically */
+    .two-column {
+        flex-direction: column;
+        min-height: auto;
+        padding-top: 70px; /* Adjust for mobile navbar height */
+    }
+
+    .left-col {
+        text-align: center; /* Center headers/logos on mobile */
+        border-right: none;
+        padding: 30px 20px 10px 20px;
+    }
+
+    .right-col {
+        padding: 10px 20px 40px 20px;
+    }
+
+    /* Adjust the Navigation Bar */
+    .nav-left {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .divider {
+        display: none; /* Remove the vertical bar on small screens */
+    }
+
+    .nav-links {
+        margin-top: 10px;
+        flex-wrap: wrap; /* Allow links to wrap to a new line if needed */
+    }
+
+    .nav-links li {
+        margin-right: 15px;
+        margin-bottom: 5px;
+    }
+
+    /* Adjust the Research Team to 1 column */
+    .team-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .team-member:last-child:nth-child(odd) {
+        grid-column: auto; /* Reset the centering logic for single column */
+    }
+
+    /* Adjust the Sponsor Logos (Imperial/NIHR) */
+    .logo-row {
+        flex-direction: column;
+        gap: 40px;
+    }
+}
