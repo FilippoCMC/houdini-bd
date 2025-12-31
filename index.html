@@ -18,16 +18,23 @@
                 <li><a href="#take-part">Take Part</a></li>
                 <li><a href="#cohort">Cohort</a></li>
                 <li><a href="#research-team">Research Team</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#contact">Contact Us</a></li>
             </ul>
         </div>
         
         <div class="nav-right">
-            <select id="theme-selector" class="theme-btn">
-                <option value="light">Light</option>
-                <option value="dark">Dark</option>
-                <option value="automatic">Auto</option>
-            </select>
+            <div class="theme-dropdown">
+                <button class="theme-icon-btn" aria-label="Toggle theme">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="moon-icon">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <div class="dropdown-content">
+                    <button class="theme-opt" data-value="light">Light</button>
+                    <button class="theme-opt" data-value="dark">Dark</button>
+                    <button class="theme-opt" data-value="automatic">Auto</button>
+                </div>
+            </div>
         </div>
     </nav>
 
@@ -88,7 +95,7 @@
                 </p>
 
                 <p>You can find detailed information about what is involved in our 
-                    <a href="about.html" target="_blank">Participant Information Sheet</a>. A shorter version is provided <a href="about.html" target="_blank">here</a>.
+                    <a href="static/documents/patient_information_sheet.pdf" target="_blank">Participant Information Sheet</a> A shorter version is provided <a href="static/documents/patient_information_sheet.pdf" target="_blank">here</a> .
                     We encourage you to read carefully before deciding whether to take part. If you have any questions at all, please feel free to reach out to the study team using the details in the 
                     <a href="#contact">Contact section below</a>.
                 </p>
@@ -115,7 +122,7 @@
         <section id="cohort" class="two-column">
             <div class="left-col"><h2>Cohort & Progress</h2></div>
             <div class="right-col">
-                <p>As the HOUDINI-BD study progresses, we will herewith share updates on the study cohort, such as the total number of participants joined, the collective hours of activity recorded, the age and sex distribution of the cohort, etc... </p>
+                <p>As the HOUDINI-BD study progresses, we will herewith share updates on the study cohort (e.g. total number of participants joined, hours of wristband datarecorded, cohort age and sex distribution, etc...) and research findings. </p>
 
                 <p><strong>Participants' Personalized Summary</strong><br>
                 To keep participants informed about their contribution, we will periodically email them with a personalized summary of the sleep-wake patterns and energy levels recorded by the wristband. This summary is intended to help particiapants better understand their sleep-wake and energy levels patterns; it is provided for information only and does not constitute medical advice.</p>
@@ -154,18 +161,20 @@
         </section>
 
         <section id="contact" class="two-column alt-section">
-            <div class="left-col"><h2>Contact</h2></div>
+            <div class="left-col"><h2>Contact Us</h2></div>
             <div class="right-col">
                 <p>Please reach out to us using the contact details below. Alternatively, if you prefer, please leave your contact email and your message in the boxes below and click on 'Send email'. An email will be sent to the research team at the email address below.</p>
                 
                 <div class="icon-contact">
-                    <div class="contact-line">
+                    <div class="contact-line clickable-email" id="copy-email" title="Click to copy email">
                         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                             <polyline points="22,6 12,13 2,6"></polyline>
                         </svg>
-                        <span>f.corponi@imperial.ac.uk</span>
+                        <span id="email-text">f.corponi@imperial.ac.uk</span>
+                        <span class="copy-badge" id="copy-badge">Copied!</span>
                     </div>
+
                     <div class="contact-line">
                         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
@@ -174,12 +183,14 @@
                     </div>
                 </div>
 
-                <form action="https://formspree.io/f/YOUR_ID" method="POST" class="stacked-form">
-                    <label>Your contact email</label>
-                    <input type="email" name="email" required>
+                <form action="https://formspree.io/f/mkogwpzk" method="POST" class="stacked-form">
+                    <label for="reply-to">Your contact email</label>
+                    <input type="email" name="_replyto" id="reply-to" required placeholder="email@example.com">
                     
-                    <label>Your message</label>
-                    <textarea id="message" name="message" rows="10"></textarea>
+                    <label for="message">Your message</label>
+                    <textarea id="message" name="message" rows="10" required></textarea>
+                    
+                    <input type="hidden" name="_subject" value="New Contact from HOUDINI-BD Website">
                     
                     <button type="submit" class="submit-btn">Send email</button>
                 </form>

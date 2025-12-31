@@ -1,16 +1,17 @@
-const themeSelector = document.getElementById('theme-selector');
 const root = document.documentElement;
+const themeOptions = document.querySelectorAll('.theme-opt');
 
 // 1. Check for saved theme on load
 const savedTheme = localStorage.getItem('theme') || 'automatic';
-themeSelector.value = savedTheme;
 applyTheme(savedTheme);
 
 // 2. Theme Switching Logic
-themeSelector.addEventListener('change', (e) => {
-    const theme = e.target.value;
-    localStorage.setItem('theme', theme); // Save preference
-    applyTheme(theme);
+themeOptions.forEach(option => {
+    option.addEventListener('click', () => {
+        const theme = option.getAttribute('data-value');
+        localStorage.setItem('theme', theme);
+        applyTheme(theme);
+    });
 });
 
 function applyTheme(theme) {
@@ -29,3 +30,25 @@ window.addEventListener('DOMContentLoaded', () => {
         messageBox.value = "Dear HOUDINI-BD Team,\n\nI would like to inquire about...";
     }
 });
+
+// Click-to-Copy Email Logic
+const emailContainer = document.getElementById('copy-email');
+const emailText = document.getElementById('email-text').innerText;
+const copyBadge = document.getElementById('copy-badge');
+
+if (emailContainer) {
+    emailContainer.addEventListener('click', () => {
+        // Copy to clipboard
+        navigator.clipboard.writeText(emailText).then(() => {
+            // Show "Copied!" badge
+            copyBadge.classList.add('show');
+            
+            // Hide badge after 2 seconds
+            setTimeout(() => {
+                copyBadge.classList.remove('show');
+            }, 2000);
+        }).catch(err => {
+            console.error('Failed to copy: ', err);
+        });
+    });
+}

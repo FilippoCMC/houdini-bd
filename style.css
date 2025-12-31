@@ -1,19 +1,23 @@
 :root[data-theme="light"] {
     --bg-color: #ffffff;
-    --bg-alt: #f7f7f7; /* Very light grey */
-    --text-color: #333333;
+    --bg-alt: #f8f9fa; /* Very subtle light grey/blue */
+    --text-color: #333333;   
     --nav-bg: #ffffff;
     --border-color: #e0e0e0;
     --accent: #2c3e50;
+    /* Professional deep blue for light mode */
+    --link-color: #0056b3; 
 }
 
 :root[data-theme="dark"] {
     --bg-color: #1a1a1a;
-    --bg-alt: #1e2a38; /* Subtle dark blue */
+    --bg-alt: #222222; /* Slightly lighter than the base black */
     --text-color: #f0f0f0;
     --nav-bg: #1a1a1a;
     --border-color: #444444;
     --accent: #3498db;
+    /* High-contrast bright blue or soft gold for dark mode */
+    --link-color: #5dade2; 
 }
 
 /* Base Styles */
@@ -94,27 +98,37 @@ body {
 /* Modified Two-Column Structure */
 .two-column {
     display: flex;
-    min-height: 50vh; 
-    padding-top: 80px; 
-    padding-bottom: 60px;
-    background-color: var(--bg-color); /* Default background */
+    /* Reduced from 50vh to 0 to let content define height, 
+       or use a smaller value like 30vh */
+    min-height: auto; 
+    /* Reduced top/bottom padding for a slimmer look */
+    padding-top: 60px;  /* Space for fixed navbar */
+    padding-bottom: 40px; 
+    background-color: var(--bg-color);
 }
 
-/* New class for alternating sections */
-.two-column.alt-section {
+/* All sections get the base background by default */
+section.two-column {
+    background-color: var(--bg-color);
+    transition: background-color 0.3s ease;
+}
+
+/* Every second (even) section gets the alternate shade */
+section.two-column:nth-of-type(even) {
     background-color: var(--bg-alt);
 }
 
 .left-col {
     flex: 1;
-    padding: 40px;
+    /* Reduced padding from 40px to 20px 40px */
+    padding: 20px 40px; 
     text-align: right;
-    /* Removed border-right and background-color rgba */
 }
 
 .right-col {
     flex: 2;
-    padding: 40px 60px;
+    /* Reduced padding from 40px 60px to 20px 60px */
+    padding: 20px 60px;
 }
 
 /* Remove the global border-bottom from sections */
@@ -324,4 +338,112 @@ section {
         flex-direction: column;
         gap: 40px;
     }
+}
+
+/* Theme Dropdown Container */
+.theme-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.theme-icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+}
+
+.moon-icon {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+}
+
+.theme-icon-btn:hover .moon-icon {
+    transform: rotate(-15deg);
+}
+
+/* Hidden Menu */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: var(--bg-color);
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    z-index: 1001;
+}
+
+/* Show on Hover */
+.theme-dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Dropdown Buttons */
+.theme-opt {
+    color: var(--text-color);
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    border: none;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.theme-opt:hover {
+    background-color: var(--bg-alt);
+}
+
+.clickable-email {
+    cursor: pointer;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    transition: opacity 0.2s;
+}
+
+.clickable-email:hover {
+    opacity: 0.7;
+}
+
+.copy-badge {
+    visibility: hidden;
+    background-color: var(--accent);
+    color: white;
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-left: 10px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.copy-badge.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Global Link Styling */
+a {
+    color: var(--link-color);
+    text-decoration: underline; /* Keeps it accessible for color-blind users */
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    filter: brightness(1.2); /* Makes the link slightly glow/brighten on hover */
+}
+
+/* Ensure navbar links remain the theme text color (if you prefer them not to be blue) */
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
 }
