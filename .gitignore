@@ -136,7 +136,6 @@ dmypy.json
 !src/timebase/data/TIMEBASE_database_reshaped.csv
 *.zip
 *.pkl
-*.pdf
 *.docx
 *TIMEBASE_database.xlsx
 *.pptx
