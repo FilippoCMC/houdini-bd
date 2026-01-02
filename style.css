@@ -698,3 +698,26 @@ a:hover {
 }
 
 
+
+/* 1. Ensure the whole page scrolls smoothly */
+html {
+    scroll-behavior: smooth;
+    /* 2. OFFSET FOR FIXED NAVBAR: Adjust this value (60px) to match your navbar height */
+    scroll-padding-top: 80px; 
+}
+
+/* 3. Specifically target the tech rows to ensure they align perfectly */
+.tech-row {
+    scroll-margin-top: 5px; /* Backup for older browsers */
+    display: flex;
+    margin-bottom: 40px;
+}
+
+/* Clean up the titles */
+.tech-title {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--text-color);
+}
