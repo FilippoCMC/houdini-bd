@@ -703,7 +703,7 @@ a:hover {
 html {
     scroll-behavior: smooth;
     /* 2. OFFSET FOR FIXED NAVBAR: Adjust this value (60px) to match your navbar height */
-    scroll-padding-top: 80px; 
+    scroll-padding-top: 60px; 
 }
 
 /* 3. Specifically target the tech rows to ensure they align perfectly */
@@ -720,4 +720,30 @@ html {
     font-size: 1.2rem;
     font-weight: bold;
     color: var(--text-color);
+}
+
+.recruiting-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;      
+    /* Centers the banner itself, but stays on its own row */
+    margin: 0 auto 10px auto; 
+    
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 1px solid #c8e6c9;
+}
+
+/* Remove the top margin only for the first subheading to bring it closer to the banner */
+.right-col .section-subheading:first-of-type {
+    margin-top: 0;
+    text-align: left; /* Ensures this stays left-aligned */
+    display: inline-block; /* Keeps your underline styling intact */
 }
