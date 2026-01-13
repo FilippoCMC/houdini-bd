@@ -670,13 +670,13 @@ a:hover {
     margin-top: 0;
 }
 
-/* Timeline Figure Styling */
-.timeline-container {
+/* Figure Styling */
+.img-container {
     text-align: center;
     margin: 40px 0;
 }
 
-.timeline-container img {
+.img-container img {
     width: 100%;
     max-width: 800px;
     height: auto;
@@ -754,4 +754,92 @@ html {
     margin-top: 0;
     text-align: left; /* Ensures this stays left-aligned */
     display: inline-block; /* Keeps your underline styling intact */
+}
+
+/* QR Code Side-by-Side Container */
+.qr-wrapper {
+    display: flex;
+    gap: 40px; 
+    margin: 30px 0;       /* Added 30px margin top/bottom for breathing room */
+    justify-content: center; /* This centers the items horizontally within the column */
+    align-items: flex-start;
+}
+
+.qr-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    width: 150px; 
+}
+
+.qr-item img {
+    width: 100%; 
+    height: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 10px; 
+    background: white; /* Keeps QR scannable in Dark Mode */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Optional: adds a professional lift */
+}
+
+.qr-item span {
+    margin-top: 12px;
+    font-weight: bold;
+    font-size: 1rem;
+    color: var(--text-color);
+    letter-spacing: 1px;
+}
+
+.caption-with-icon {
+    display: flex;
+    align-items: center;
+    gap: 8px;           /* Space between icon and text */
+    margin-top: 12px;
+    font-weight: bold;
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+.brand-icon {
+    width: 1.1em;   /* Using 'em' makes it scale perfectly with font-size */
+    height: 1.1em;
+    fill: var(--text-color);
+    flex-shrink: 0;
+}
+
+/* Specific color for Android green if you want it to pop (Optional) */
+/* .qr-item:last-child .brand-icon { fill: #3DDC84; } */
+
+/* Gallery Container */
+.image-gallery-wrapper {
+    display: flex;
+    gap: 20px;            /* Space between images */
+    justify-content: center; 
+    margin: 40px 0;       /* Increased vertical margin for the larger images */
+    flex-wrap: wrap;      
+}
+
+/* Individual Image Container */
+.gallery-item {
+    /* Increased from 220px to 320px to take more horizontal space */
+    flex: 0 1 320px;      
+    text-align: center;
+    max-width: 100%;      /* Safety for small screens */
+}
+
+.gallery-item img {
+    width: 100%;          
+    height: 240px;        /* Increased height to match the wider look */
+    object-fit: cover;    
+    border: 1px solid var(--border-color);
+    border-radius: 12px;  /* Slightly rounder corners for larger images */
+    background-color: var(--bg-alt);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* Adds depth to larger images */
+}
+
+.gallery-caption {
+    margin-top: 15px;
+    font-size: 1rem;      /* Slightly larger text for larger images */
+    font-style: italic;
+    color: var(--text-color);
 }
