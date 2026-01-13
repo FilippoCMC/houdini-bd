@@ -843,3 +843,32 @@ html {
     font-style: italic;
     color: var(--text-color);
 }
+
+/* Video Container Styling */
+.video-container {
+    margin: 30px 0;
+    text-align: center;
+    width: 100%;
+}
+
+.demo-video {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    /* Added aspect-ratio to prevent layout shift while loading */
+    aspect-ratio: 4 / 3; 
+    background-color: var(--bg-alt); /* Shows a grey box while downloading */
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    display: block;
+    margin: 0 auto;
+}
+
+/* Ensure captions are consistent */
+.center-caption {
+    margin-top: 12px;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--text-color);
+    opacity: 0.8;
+}
