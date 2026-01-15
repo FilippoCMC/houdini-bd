@@ -958,3 +958,57 @@ html {
         max-width: 300px; /* Prevents them from being too huge on mobile */
     }
 }
+
+/* 1. Reset Tech Image container to match your original look */
+.tech-row .tech-img {
+    flex: 0 0 160px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Base style for the clickable images */
+.zoomable {
+    cursor: zoom-in;
+    transition: transform 0.3s ease;
+    width: 150px; /* Your original size */
+    height: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    object-fit: contain;
+}
+
+/* 2. The "Pop Out" State */
+.zoomed {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centers the image */
+    
+    /* Responsive sizing: almost full screen but with breathing room */
+    width: auto;
+    height: auto;
+    max-width: 90vw; 
+    max-height: 85vh;
+    
+    z-index: 10000; /* Above everything */
+    cursor: zoom-out;
+    border: none;
+    box-shadow: 0 0 50px rgba(0,0,0,0.5);
+}
+
+/* 3. The Background Dimmer */
+.zoom-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8); /* Darkens the rest of the site */
+    z-index: 9999;
+    display: none;
+    cursor: zoom-out;
+}
+
+.zoom-overlay.active {
+    display: block;
+}

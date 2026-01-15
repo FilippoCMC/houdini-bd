@@ -52,3 +52,32 @@ if (emailContainer) {
         });
     });
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const zoomableImages = document.querySelectorAll('.zoomable');
+    const overlay = document.getElementById('overlay');
+
+    zoomableImages.forEach(img => {
+        img.addEventListener('click', () => {
+            img.classList.toggle('zoomed');
+            overlay.classList.toggle('active');
+            
+            // Prevent body scrolling when image is open
+            if (img.classList.contains('zoomed')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        });
+    });
+
+    // Close when clicking the dark background overlay
+    overlay.addEventListener('click', () => {
+        const zoomedImg = document.querySelector('.zoomed');
+        if (zoomedImg) {
+            zoomedImg.classList.remove('zoomed');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+});
