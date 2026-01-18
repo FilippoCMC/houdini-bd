@@ -760,7 +760,7 @@ html {
 .qr-wrapper {
     display: flex;
     /* --- INCREASED DISTANCE HERE --- */
-    gap: 200px;              /* Changed from 40px to 100px */
+    gap: 100px;              /* Changed from 40px to 100px */
     /* ------------------------------- */
     margin: 30px 0;
     justify-content: center; 
@@ -808,6 +808,33 @@ html {
     height: 1.1em;
     fill: var(--text-color);
     flex-shrink: 0;
+}
+
+/* The 'Active' state when a QR code is clicked */
+.qr-item.active {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.95); /* Dims the background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    cursor: zoom-out;
+}
+
+/* Make the image larger when active */
+.qr-item.active img {
+    width: 350px; /* Adjust size for the popup */
+    transition: transform 0.3s ease;
+}
+
+/* Ensure the original items look clickable */
+.qr-item {
+    cursor: zoom-in;
+    transition: all 0.3s ease;
 }
 
 /* Specific color for Android green if you want it to pop (Optional) */
@@ -969,46 +996,38 @@ html {
 /* Base style for the clickable images */
 .zoomable {
     cursor: zoom-in;
-    transition: transform 0.3s ease;
-    width: 150px; /* Your original size */
-    height: auto;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    object-fit: contain;
+    transition: transform 0.2s ease;
 }
 
-/* 2. The "Pop Out" State */
-.zoomed {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* Centers the image */
-    
-    /* Responsive sizing: almost full screen but with breathing room */
-    width: auto;
-    height: auto;
-    max-width: 90vw; 
-    max-height: 85vh;
-    
-    z-index: 10000; /* Above everything */
-    cursor: zoom-out;
-    border: none;
-    box-shadow: 0 0 50px rgba(0,0,0,0.5);
-}
-
-/* 3. The Background Dimmer */
+/* The Background Dimmer */
 .zoom-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.8); /* Darkens the rest of the site */
-    z-index: 9999;
-    display: none;
+    background: rgba(0, 0, 0, 0.85); /* Dark cinematic overlay */
+    z-index: 9998; /* Just below the image */
+    display: none; /* Hidden by default */
     cursor: zoom-out;
 }
 
 .zoom-overlay.active {
     display: block;
+}
+
+/* The "Pop Out" State for the Image */
+.zoomable.zoomed {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Perfectly centered */
+    width: auto !important; /* Overrides the inline 150px */
+    height: auto !important;
+    max-width: 90vw; 
+    max-height: 80vh;
+    z-index: 9999;
+    cursor: zoom-out;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border: none !important;
 }

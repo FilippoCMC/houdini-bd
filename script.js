@@ -53,31 +53,44 @@ if (emailContainer) {
     });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    const zoomableImages = document.querySelectorAll('.zoomable');
-    const overlay = document.getElementById('overlay');
+const overlay = document.getElementById('overlay');
+const zoomableImages = document.querySelectorAll('.zoomable');
 
-    zoomableImages.forEach(img => {
-        img.addEventListener('click', () => {
-            img.classList.toggle('zoomed');
-            overlay.classList.toggle('active');
-            
-            // Prevent body scrolling when image is open
-            if (img.classList.contains('zoomed')) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = '';
-            }
-        });
+zoomableImages.forEach(img => {
+    img.addEventListener('click', () => {
+        const isZoomed = img.classList.contains('zoomed');
+
+        if (!isZoomed) {
+            // ZOOM IN
+            img.classList.add('zoomed');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        } else {
+            // ZOOM OUT (if clicking the image itself)
+            closeAll();
+        }
     });
+});
 
-    // Close when clicking the dark background overlay
-    overlay.addEventListener('click', () => {
-        const zoomedImg = document.querySelector('.zoomed');
-        if (zoomedImg) {
-            zoomedImg.classList.remove('zoomed');
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
+// Close when clicking the dark background overlay
+overlay.addEventListener('click', closeAll);
+
+function closeAll() {
+    zoomableImages.forEach(img => img.classList.remove('zoomed'));
+    overlay.classList.remove('active');
+    document.body.style.overflow = 'auto'; // Re-enable scrolling
+}
+
+document.querySelectorAll('.qr-item').forEach(item => {
+    item.addEventListener('click', function() {
+        // Toggle the 'active' class on the clicked item
+        this.classList.toggle('active');
+        
+        // Prevent scrolling when a QR code is popped up
+        if (this.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
         }
     });
 });
